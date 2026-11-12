@@ -9,7 +9,7 @@ services:
 
   api:
     # Usa la imagen publicada en Docker Hub; si no existe localmente, la construye desde el Dockerfile
-    image: ${DOCKERHUB_USER:-tuusuario}/adoptme:1.0.0
+    image: ${DOCKERHUB_USER:-superusuario32}/adoptme:1.0.0
     build: .
     ports:
       - "8080:8080"
