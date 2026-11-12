@@ -1,0 +1,24 @@
+# Levanta la API + un MongoDB local con un solo comando: docker compose up
+# Útil para probar el proyecto sin tener una cuenta de MongoDB Atlas.
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+  api:
+    # Usa la imagen publicada en Docker Hub; si no existe localmente, la construye desde el Dockerfile
+    image: ${DOCKERHUB_USER:-tuusuario}/adoptme:1.0.0
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      MONGO_URL: mongodb://mongo:27017/adoptme
+      JWT_SECRET: ${JWT_SECRET:-solo-para-pruebas-locales}
+      NODE_ENV: ${NODE_ENV:-development}
+    depends_on:
+      - mongo
+
+volumes:
+  mongo-data:
