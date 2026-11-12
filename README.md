@@ -4,13 +4,11 @@ API REST de adopción de mascotas (usuarios, mascotas, adopciones y sesiones) co
 
 ## 🐳 Imagen en Docker Hub
 
-**https://hub.docker.com/r/TU_USUARIO/adoptme**
+**https://hub.docker.com/r/superusuario32/adoptme**
 
 ```bash
-docker pull TU_USUARIO/adoptme:1.0.0
+docker pull superusuario32/adoptme:1.0.0
 ```
-
-> Reemplazá `TU_USUARIO` por tu usuario de Docker Hub en todo este archivo antes de entregar.
 
 ---
 
@@ -88,18 +86,18 @@ Copiá `.env.example` como `.env` y completalo. El `.env` está en `.gitignore` 
 ### Opción A: imagen de Docker Hub + tu MongoDB (Atlas)
 
 ```bash
-docker pull TU_USUARIO/adoptme:1.0.0
+docker pull superusuario32/adoptme:1.0.0
 
 docker run -d --name adoptme -p 8080:8080 \
   -e MONGO_URL="mongodb+srv://USUARIO:PASSWORD@cluster0.xxxxx.mongodb.net/adoptme" \
   -e JWT_SECRET="un-secreto-largo" \
-  TU_USUARIO/adoptme:1.0.0
+  superusuario32/adoptme:1.0.0
 ```
 
 O con tu archivo `.env`:
 
 ```bash
-docker run -d --name adoptme -p 8080:8080 --env-file .env TU_USUARIO/adoptme:1.0.0
+docker run -d --name adoptme -p 8080:8080 --env-file .env superusuario32/adoptme:1.0.0
 ```
 
 Abrí **http://localhost:8080/api/docs** para ver y probar la API.
@@ -128,18 +126,18 @@ docker stop adoptme && docker rm adoptme
 
 ```bash
 # 1. Construir la imagen desde la raíz del proyecto
-docker build -t TU_USUARIO/adoptme:1.0.0 .
+docker build -t superusuario32/adoptme:1.0.0 .
 
 # 2. Probarla localmente
-docker run --rm -p 8080:8080 --env-file .env TU_USUARIO/adoptme:1.0.0
+docker run --rm -p 8080:8080 --env-file .env superusuario32/adoptme:1.0.0
 
 # 3. Iniciar sesión en Docker Hub (te pide el token; no lo escribas en el comando)
-docker login -u TU_USUARIO
+docker login -u superusuario32
 
 # 4. Etiquetar también como latest y subir
-docker tag TU_USUARIO/adoptme:1.0.0 TU_USUARIO/adoptme:latest
-docker push TU_USUARIO/adoptme:1.0.0
-docker push TU_USUARIO/adoptme:latest
+docker tag superusuario32/adoptme:1.0.0 superusuario32/adoptme:latest
+docker push superusuario32/adoptme:1.0.0
+docker push superusuario32/adoptme:latest
 ```
 
 Verificá en Docker Hub que el repositorio sea **público** (Settings → Visibility).
